@@ -154,7 +154,7 @@ const Index = () => {
       {showScrollTop && (
         <Button
           onClick={scrollToTop}
-          className="fixed bottom-20 z-50 w-12 h-12 rounded-full shadow-lg hover:shadow-xl transition-all animate-slide-up"
+          className="fixed bottom-20 z-50 w-12 h-12 rounded-full shadow-lg hover:shadow-xl hover:scale-110 transition-all animate-bounce-in hover:animate-float"
           style={{ right: 'calc((100vw - min(100vw - 2rem, 1400px)) / 2)' }}
           size="icon"
         >
@@ -166,18 +166,18 @@ const Index = () => {
         <div className="container mx-auto py-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-2">
-              <Icon name="Car" size={28} className="text-primary sm:w-8 sm:h-8" />
-              <span className="text-xl sm:text-2xl font-bold">AutoParts Pro</span>
+              <Icon name="Car" size={28} className="text-primary sm:w-8 sm:h-8 animate-pulse-glow" />
+              <span className="text-xl sm:text-2xl font-bold hover:text-primary transition-colors">AutoParts Pro</span>
             </div>
             
             <div className="hidden md:flex gap-6">
-              <button onClick={() => scrollToSection('hero')} className="hover:text-primary transition-colors">Главная</button>
-              <button onClick={() => scrollToSection('about')} className="hover:text-primary transition-colors">О нас</button>
-              <button onClick={() => scrollToSection('lines')} className="hover:text-primary transition-colors">Линейки</button>
-              <button onClick={() => scrollToSection('products')} className="hover:text-primary transition-colors">Продукция</button>
-              <button onClick={() => scrollToSection('advantages')} className="hover:text-primary transition-colors">Преимущества</button>
-              <button onClick={() => scrollToSection('faq')} className="hover:text-primary transition-colors">FAQ</button>
-              <button onClick={() => scrollToSection('contacts')} className="hover:text-primary transition-colors">Контакты</button>
+              <button onClick={() => scrollToSection('hero')} className="hover:text-primary hover:scale-110 transition-all">Главная</button>
+              <button onClick={() => scrollToSection('about')} className="hover:text-primary hover:scale-110 transition-all">О нас</button>
+              <button onClick={() => scrollToSection('lines')} className="hover:text-primary hover:scale-110 transition-all">Линейки</button>
+              <button onClick={() => scrollToSection('products')} className="hover:text-primary hover:scale-110 transition-all">Продукция</button>
+              <button onClick={() => scrollToSection('advantages')} className="hover:text-primary hover:scale-110 transition-all">Преимущества</button>
+              <button onClick={() => scrollToSection('faq')} className="hover:text-primary hover:scale-110 transition-all">FAQ</button>
+              <button onClick={() => scrollToSection('contacts')} className="hover:text-primary hover:scale-110 transition-all">Контакты</button>
             </div>
 
             <Button variant="ghost" size="icon" className="md:hidden" onClick={() => setIsMenuOpen(!isMenuOpen)}>
@@ -254,9 +254,9 @@ const Index = () => {
 
       <section id="about" className="py-20 bg-card/50">
         <div className="container mx-auto">
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-8 sm:mb-12">Кто мы?</h2>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-8 sm:mb-12 animate-slide-in-left">Кто мы?</h2>
           <div className="grid grid-cols-12 gap-6">
-            <div className="col-span-12 md:col-span-6 space-y-4 sm:space-y-6 animate-fade-in">
+            <div className="col-span-12 md:col-span-6 space-y-4 sm:space-y-6 animate-slide-in-left">
               <p className="text-base sm:text-lg text-muted-foreground">
                 <span className="text-primary font-semibold">AutoParts Pro</span> — ведущий поставщик автозапчастей на российском рынке с 2010 года.
               </p>
@@ -268,27 +268,27 @@ const Index = () => {
               </p>
             </div>
             <div className="col-span-12 md:col-span-6 grid grid-cols-12 gap-4 sm:gap-6">
-              <Card className="col-span-6 text-center hover:scale-105 transition-transform">
+              <Card className="col-span-6 text-center hover:scale-110 hover:rotate-2 transition-all animate-bounce-in" style={{animationDelay: '0.1s'}}>
                 <CardHeader className="py-4 sm:py-6">
-                  <CardTitle className="text-3xl sm:text-4xl text-primary">15+</CardTitle>
+                  <CardTitle className="text-3xl sm:text-4xl text-primary animate-pulse-glow">15+</CardTitle>
                   <CardDescription className="text-xs sm:text-sm">лет на рынке</CardDescription>
                 </CardHeader>
               </Card>
-              <Card className="col-span-6 text-center hover:scale-105 transition-transform">
+              <Card className="col-span-6 text-center hover:scale-110 hover:rotate-2 transition-all animate-bounce-in" style={{animationDelay: '0.2s'}}>
                 <CardHeader className="py-4 sm:py-6">
-                  <CardTitle className="text-3xl sm:text-4xl text-primary">50К+</CardTitle>
+                  <CardTitle className="text-3xl sm:text-4xl text-primary animate-pulse-glow">50К+</CardTitle>
                   <CardDescription className="text-xs sm:text-sm">довольных клиентов</CardDescription>
                 </CardHeader>
               </Card>
-              <Card className="col-span-6 text-center hover:scale-105 transition-transform">
+              <Card className="col-span-6 text-center hover:scale-110 hover:rotate-2 transition-all animate-bounce-in" style={{animationDelay: '0.3s'}}>
                 <CardHeader className="py-4 sm:py-6">
-                  <CardTitle className="text-3xl sm:text-4xl text-primary">10К+</CardTitle>
+                  <CardTitle className="text-3xl sm:text-4xl text-primary animate-pulse-glow">10К+</CardTitle>
                   <CardDescription className="text-xs sm:text-sm">товаров в наличии</CardDescription>
                 </CardHeader>
               </Card>
-              <Card className="col-span-6 text-center hover:scale-105 transition-transform">
+              <Card className="col-span-6 text-center hover:scale-110 hover:rotate-2 transition-all animate-bounce-in" style={{animationDelay: '0.4s'}}>
                 <CardHeader className="py-4 sm:py-6">
-                  <CardTitle className="text-3xl sm:text-4xl text-primary">100%</CardTitle>
+                  <CardTitle className="text-3xl sm:text-4xl text-primary animate-pulse-glow">100%</CardTitle>
                   <CardDescription className="text-xs sm:text-sm">оригинал</CardDescription>
                 </CardHeader>
               </Card>
@@ -299,13 +299,13 @@ const Index = () => {
 
       <section id="lines" className="py-20">
         <div className="container mx-auto">
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-8 sm:mb-12">Линейки продукции</h2>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-8 sm:mb-12 animate-rotate-in">Линейки продукции</h2>
           <div className="grid grid-cols-12 gap-6">
             {productLines.map((line, index) => (
-              <Card key={index} className="col-span-12 md:col-span-4 hover:scale-105 hover:border-primary transition-all cursor-pointer group animate-scale-in" style={{animationDelay: `${index * 0.1}s`}}>
+              <Card key={index} className="col-span-12 md:col-span-4 hover:scale-110 hover:border-primary hover:shadow-2xl transition-all cursor-pointer group animate-flip-in" style={{animationDelay: `${index * 0.1}s`}}>
                 <CardHeader>
-                  <div className="mb-4">
-                    <Icon name={line.icon as any} size={48} className="text-primary group-hover:text-secondary transition-colors" />
+                  <div className="mb-4 group-hover:animate-float">
+                    <Icon name={line.icon as any} size={48} className="text-primary group-hover:text-secondary group-hover:rotate-12 transition-all" />
                   </div>
                   <CardTitle className="text-xl">{line.name}</CardTitle>
                   <CardDescription className="text-base">{line.description}</CardDescription>
@@ -318,14 +318,14 @@ const Index = () => {
 
       <section id="products" className="py-20 bg-card/50">
         <div className="container mx-auto">
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-8 sm:mb-12">Популярная продукция</h2>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-8 sm:mb-12 animate-slide-in-left">Популярная продукция</h2>
           <div className="grid grid-cols-12 gap-6">
             {products.map((product) => (
-              <Card key={product.id} className="col-span-12 md:col-span-6 lg:col-span-3 overflow-hidden hover:shadow-xl hover:scale-105 transition-all cursor-pointer group flex flex-col">
+              <Card key={product.id} className="col-span-12 md:col-span-6 lg:col-span-3 overflow-hidden hover:shadow-2xl hover:scale-110 hover:-rotate-1 transition-all duration-300 cursor-pointer group flex flex-col animate-slide-up">
                 <div className="aspect-square bg-muted/50 relative overflow-hidden">
-                  <img src={product.image} alt={product.name} className="w-full h-full object-cover group-hover:scale-110 transition-transform" />
-                  <div className="absolute top-2 right-2">
-                    <span className="bg-primary text-primary-foreground px-3 py-1 rounded-full text-sm font-semibold">
+                  <img src={product.image} alt={product.name} className="w-full h-full object-cover group-hover:scale-125 group-hover:rotate-3 transition-all duration-500" />
+                  <div className="absolute top-2 right-2 animate-bounce-in">
+                    <span className="bg-primary text-primary-foreground px-3 py-1 rounded-full text-sm font-semibold shadow-lg">
                       {product.category}
                     </span>
                   </div>
@@ -354,12 +354,12 @@ const Index = () => {
 
       <section id="advantages" className="py-20">
         <div className="container mx-auto">
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-8 sm:mb-12">Наши преимущества</h2>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-8 sm:mb-12 animate-rotate-in">Наши преимущества</h2>
           
           <div className="grid grid-cols-12 gap-6 sm:gap-8">
             {advantages.map((adv, index) => (
-              <div key={index} className="col-span-12 md:col-span-6 lg:col-span-3 animate-fade-in" style={{animationDelay: `${index * 0.15}s`}}>
-                <div className="mb-4 inline-flex items-center justify-center w-20 h-20 rounded-full bg-primary/20 hover:bg-primary/30 transition-colors">
+              <div key={index} className="col-span-12 md:col-span-6 lg:col-span-3 animate-bounce-in hover:scale-105 transition-transform" style={{animationDelay: `${index * 0.15}s`}}>
+                <div className="mb-4 inline-flex items-center justify-center w-20 h-20 rounded-full bg-primary/20 hover:bg-primary/30 hover:rotate-12 transition-all animate-float">
                   <Icon name={adv.icon as any} size={40} className="text-primary" />
                 </div>
                 <h3 className="text-xl font-bold mb-2">{adv.title}</h3>
@@ -372,12 +372,12 @@ const Index = () => {
 
       <section id="faq" className="py-20 bg-card/50">
         <div className="container mx-auto">
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-8 sm:mb-12">Часто задаваемые вопросы</h2>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-8 sm:mb-12 animate-slide-in-left">Часто задаваемые вопросы</h2>
           <div className="grid grid-cols-12 gap-6">
             <div className="col-span-12">
               <Accordion type="single" collapsible className="space-y-4">
                 {faqItems.map((item, index) => (
-                  <AccordionItem key={index} value={`item-${index}`} className="border border-border rounded-lg px-3 sm:px-6 bg-background">
+                  <AccordionItem key={index} value={`item-${index}`} className="border border-border rounded-lg px-3 sm:px-6 bg-background hover:border-primary hover:scale-102 transition-all animate-fade-in" style={{animationDelay: `${index * 0.1}s`}}>
                     <AccordionTrigger className="text-base sm:text-lg font-semibold hover:text-primary text-left">
                       {item.q}
                     </AccordionTrigger>
@@ -394,12 +394,12 @@ const Index = () => {
 
       <section id="contacts" className="py-20">
         <div className="container mx-auto">
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-8 sm:mb-12">Контакты</h2>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-8 sm:mb-12 animate-rotate-in">Контакты</h2>
           <div className="grid grid-cols-12 gap-6">
-            <Card className="col-span-12 md:col-span-6 lg:col-span-3">
+            <Card className="col-span-12 md:col-span-6 lg:col-span-3 hover:scale-105 hover:shadow-xl transition-all animate-slide-up">
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
-                  <Icon name="MapPin" size={24} className="text-primary" />
+                  <Icon name="MapPin" size={24} className="text-primary animate-float" />
                   Адрес
                 </CardTitle>
               </CardHeader>
@@ -409,10 +409,10 @@ const Index = () => {
               </CardContent>
             </Card>
 
-            <Card className="col-span-12 md:col-span-6 lg:col-span-3">
+            <Card className="col-span-12 md:col-span-6 lg:col-span-3 hover:scale-105 hover:shadow-xl transition-all animate-slide-up" style={{animationDelay: '0.1s'}}>
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
-                  <Icon name="Phone" size={24} className="text-primary" />
+                  <Icon name="Phone" size={24} className="text-primary animate-pulse-glow" />
                   Телефон
                 </CardTitle>
               </CardHeader>
@@ -422,10 +422,10 @@ const Index = () => {
               </CardContent>
             </Card>
 
-            <Card className="col-span-12 md:col-span-6 lg:col-span-3">
+            <Card className="col-span-12 md:col-span-6 lg:col-span-3 hover:scale-105 hover:shadow-xl transition-all animate-slide-up" style={{animationDelay: '0.2s'}}>
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
-                  <Icon name="Mail" size={24} className="text-primary" />
+                  <Icon name="Mail" size={24} className="text-primary animate-float" />
                   Email
                 </CardTitle>
               </CardHeader>
@@ -435,10 +435,10 @@ const Index = () => {
               </CardContent>
             </Card>
 
-            <Card className="col-span-12 md:col-span-6 lg:col-span-3">
+            <Card className="col-span-12 md:col-span-6 lg:col-span-3 hover:scale-105 hover:shadow-xl transition-all animate-slide-up" style={{animationDelay: '0.3s'}}>
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
-                  <Icon name="Clock" size={24} className="text-primary" />
+                  <Icon name="Clock" size={24} className="text-primary animate-pulse-glow" />
                   График работы
                 </CardTitle>
               </CardHeader>
@@ -449,16 +449,16 @@ const Index = () => {
             </Card>
           </div>
 
-          <div className="mt-12 text-center">
-            <h3 className="text-2xl font-bold mb-6">Мы в социальных сетях</h3>
+          <div className="mt-12 text-center animate-fade-in">
+            <h3 className="text-2xl font-bold mb-6 animate-slide-up">Мы в социальных сетях</h3>
             <div className="flex gap-4 justify-center">
-              <Button size="icon" variant="outline" className="hover:bg-primary hover:text-primary-foreground">
+              <Button size="icon" variant="outline" className="hover:bg-primary hover:text-primary-foreground hover:scale-125 hover:rotate-12 transition-all animate-bounce-in">
                 <Icon name="Phone" size={24} />
               </Button>
-              <Button size="icon" variant="outline" className="hover:bg-primary hover:text-primary-foreground">
+              <Button size="icon" variant="outline" className="hover:bg-primary hover:text-primary-foreground hover:scale-125 hover:rotate-12 transition-all animate-bounce-in" style={{animationDelay: '0.1s'}}>
                 <Icon name="Mail" size={24} />
               </Button>
-              <Button size="icon" variant="outline" className="hover:bg-primary hover:text-primary-foreground">
+              <Button size="icon" variant="outline" className="hover:bg-primary hover:text-primary-foreground hover:scale-125 hover:rotate-12 transition-all animate-bounce-in" style={{animationDelay: '0.2s'}}>
                 <Icon name="MessageCircle" size={24} />
               </Button>
             </div>
