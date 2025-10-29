@@ -11,6 +11,7 @@ const Index = () => {
   const [showScrollTop, setShowScrollTop] = useState(false);
   const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true, align: 'start' });
   const [selectedIndex, setSelectedIndex] = useState(0);
+  const [isAutoplayPaused, setIsAutoplayPaused] = useState(false);
 
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -43,14 +44,16 @@ const Index = () => {
     emblaApi.on('select', onSelect);
     
     const autoplay = setInterval(() => {
-      emblaApi.scrollNext();
+      if (!isAutoplayPaused) {
+        emblaApi.scrollNext();
+      }
     }, 5000);
     
     return () => {
       emblaApi.off('select', onSelect);
       clearInterval(autoplay);
     };
-  }, [emblaApi, onSelect]);
+  }, [emblaApi, onSelect, isAutoplayPaused]);
 
   const products = [
     {
@@ -197,7 +200,11 @@ const Index = () => {
       </nav>
 
       <section id="hero" className="pt-16 relative w-full">
-        <div className="relative w-full h-[512px]">
+        <div 
+          className="relative w-full h-[512px]"
+          onMouseEnter={() => setIsAutoplayPaused(true)}
+          onMouseLeave={() => setIsAutoplayPaused(false)}
+        >
           <div className="overflow-hidden h-full" ref={emblaRef}>
             <div className="flex h-full">
               {advantages.map((adv, index) => (
@@ -371,10 +378,10 @@ const Index = () => {
               <Accordion type="single" collapsible className="space-y-4">
                 {faqItems.map((item, index) => (
                   <AccordionItem key={index} value={`item-${index}`} className="border border-border rounded-lg px-3 sm:px-6 bg-background">
-                    <AccordionTrigger className="text-base sm:text-lg font-semibold hover:text-primary">
+                    <AccordionTrigger className="text-base sm:text-lg font-semibold hover:text-primary text-left">
                       {item.q}
                     </AccordionTrigger>
-                    <AccordionContent className="text-muted-foreground text-sm sm:text-base">
+                    <AccordionContent className="text-muted-foreground text-sm sm:text-base text-left">
                       {item.a}
                     </AccordionContent>
                   </AccordionItem>
