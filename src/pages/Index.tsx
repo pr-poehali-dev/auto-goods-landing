@@ -41,8 +41,14 @@ const Index = () => {
     if (!emblaApi) return;
     onSelect();
     emblaApi.on('select', onSelect);
+    
+    const autoplay = setInterval(() => {
+      emblaApi.scrollNext();
+    }, 5000);
+    
     return () => {
       emblaApi.off('select', onSelect);
+      clearInterval(autoplay);
     };
   }, [emblaApi, onSelect]);
 
@@ -191,7 +197,7 @@ const Index = () => {
       </nav>
 
       <section id="hero" className="pt-16 relative w-full">
-        <div className="relative w-full h-screen">
+        <div className="relative w-full h-[512px]">
           <div className="overflow-hidden h-full" ref={emblaRef}>
             <div className="flex h-full">
               {advantages.map((adv, index) => (
@@ -199,7 +205,7 @@ const Index = () => {
                   <img 
                     src={adv.image} 
                     alt={adv.title} 
-                    className="w-full h-full object-cover"
+                    className="w-full h-full object-cover transition-all duration-1000 ease-in-out"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-background/60 to-transparent"></div>
                 </div>
@@ -341,11 +347,11 @@ const Index = () => {
 
       <section id="advantages" className="py-20">
         <div className="container mx-auto">
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-8 sm:mb-12 text-center">Наши преимущества</h2>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-8 sm:mb-12">Наши преимущества</h2>
           
           <div className="grid grid-cols-12 gap-6 sm:gap-8">
             {advantages.map((adv, index) => (
-              <div key={index} className="col-span-12 md:col-span-6 lg:col-span-3 text-center animate-fade-in" style={{animationDelay: `${index * 0.15}s`}}>
+              <div key={index} className="col-span-12 md:col-span-6 lg:col-span-3 animate-fade-in" style={{animationDelay: `${index * 0.15}s`}}>
                 <div className="mb-4 inline-flex items-center justify-center w-20 h-20 rounded-full bg-primary/20 hover:bg-primary/30 transition-colors">
                   <Icon name={adv.icon as any} size={40} className="text-primary" />
                 </div>
