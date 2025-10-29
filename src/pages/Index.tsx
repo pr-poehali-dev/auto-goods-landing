@@ -261,20 +261,20 @@ const Index = () => {
 
       <section id="faq" className="py-20 px-4 bg-card/50">
         <div className="container mx-auto">
-          <div className="grid grid-cols-12">
-            <div className="col-span-12 lg:col-span-8 lg:col-start-3">
-              <h2 className="text-4xl md:text-5xl font-bold mb-12">Часто задаваемые вопросы</h2>
+          <h2 className="text-4xl md:text-5xl font-bold mb-12">Часто задаваемые вопросы</h2>
+          <div className="grid grid-cols-12 gap-6">
+            <div className="col-span-12">
               <Accordion type="single" collapsible className="space-y-4">
-            {faqItems.map((item, index) => (
-              <AccordionItem key={index} value={`item-${index}`} className="border border-border rounded-lg px-6 bg-background">
-                <AccordionTrigger className="text-lg font-semibold hover:text-primary">
-                  {item.q}
-                </AccordionTrigger>
-                <AccordionContent className="text-muted-foreground text-base">
-                  {item.a}
-                </AccordionContent>
-              </AccordionItem>
-            ))}
+                {faqItems.map((item, index) => (
+                  <AccordionItem key={index} value={`item-${index}`} className="border border-border rounded-lg px-6 bg-background">
+                    <AccordionTrigger className="text-lg font-semibold hover:text-primary">
+                      {item.q}
+                    </AccordionTrigger>
+                    <AccordionContent className="text-muted-foreground text-base">
+                      {item.a}
+                    </AccordionContent>
+                  </AccordionItem>
+                ))}
               </Accordion>
             </div>
           </div>
