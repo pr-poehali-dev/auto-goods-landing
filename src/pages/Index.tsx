@@ -6,6 +6,7 @@ import Icon from '@/components/ui/icon';
 
 const Index = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [showGrid, setShowGrid] = useState(false);
 
   const products = [
     {
@@ -71,7 +72,17 @@ const Index = () => {
   };
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className={`min-h-screen bg-background ${showGrid ? 'grid-guide' : ''}`}>
+      <Button 
+        onClick={() => setShowGrid(!showGrid)}
+        className="fixed bottom-4 left-4 z-50"
+        variant="outline"
+        size="sm"
+      >
+        <Icon name={showGrid ? 'EyeOff' : 'Eye'} size={16} className="mr-2" />
+        {showGrid ? 'Скрыть' : 'Показать'} сетку
+      </Button>
+      
       <nav className="fixed top-0 w-full bg-background/95 backdrop-blur-sm z-50 border-b border-border">
         <div className="container mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
