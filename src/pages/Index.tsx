@@ -145,7 +145,8 @@ const Index = () => {
       {showScrollTop && (
         <Button
           onClick={scrollToTop}
-          className="fixed bottom-4 right-4 z-50 w-12 h-12 rounded-full shadow-lg hover:shadow-xl transition-all animate-slide-up"
+          className="fixed bottom-20 z-50 w-12 h-12 rounded-full shadow-lg hover:shadow-xl transition-all animate-slide-up"
+          style={{ right: 'calc((100vw - min(100vw - 2rem, 1400px)) / 2)' }}
           size="icon"
         >
           <Icon name="ArrowUp" size={24} />
@@ -189,24 +190,51 @@ const Index = () => {
         </div>
       </nav>
 
-      <section id="hero" className="pt-32 pb-20 relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-primary/20 via-secondary/20 to-background -z-10"></div>
-        <div className="container mx-auto text-center animate-fade-in">
-          <h1 className="text-3xl sm:text-4xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent px-2">
-            Качественные автозапчасти
-          </h1>
-          <p className="text-base sm:text-lg md:text-2xl mb-8 text-muted-foreground max-w-2xl mx-auto px-2">
-            Широкий ассортимент оригинальных деталей для вашего автомобиля с доставкой по всей России
-          </p>
-          <div className="flex gap-3 justify-center flex-wrap px-2">
-            <Button size="lg" className="text-base sm:text-lg px-4 sm:px-8" onClick={() => scrollToSection('products')}>
-              <Icon name="ShoppingCart" size={18} className="mr-2" />
-              Перейти в каталог
-            </Button>
-            <Button size="lg" variant="outline" className="text-base sm:text-lg px-4 sm:px-8" onClick={() => scrollToSection('contacts')}>
-              <Icon name="Phone" size={18} className="mr-2" />
-              Связаться с нами
-            </Button>
+      <section id="hero" className="pt-16 relative w-full">
+        <div className="relative w-full h-screen">
+          <div className="overflow-hidden h-full" ref={emblaRef}>
+            <div className="flex h-full">
+              {advantages.map((adv, index) => (
+                <div key={index} className="flex-[0_0_100%] min-w-0 h-full relative">
+                  <img 
+                    src={adv.image} 
+                    alt={adv.title} 
+                    className="w-full h-full object-cover"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-background/60 to-transparent"></div>
+                </div>
+              ))}
+            </div>
+          </div>
+          
+          <Button
+            variant="ghost"
+            size="icon"
+            className="absolute left-4 top-1/2 -translate-y-1/2 z-10 w-12 h-12 rounded-full bg-background/30 hover:bg-background/60 backdrop-blur-sm text-white"
+            onClick={scrollToPrevious}
+          >
+            <Icon name="ChevronLeft" size={32} />
+          </Button>
+          
+          <Button
+            variant="ghost"
+            size="icon"
+            className="absolute right-4 top-1/2 -translate-y-1/2 z-10 w-12 h-12 rounded-full bg-background/30 hover:bg-background/60 backdrop-blur-sm text-white"
+            onClick={scrollToNext}
+          >
+            <Icon name="ChevronRight" size={32} />
+          </Button>
+
+          <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex gap-3 z-10">
+            {advantages.map((_, index) => (
+              <button
+                key={index}
+                className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                  index === selectedIndex ? 'bg-white w-10' : 'bg-white/40'
+                }`}
+                onClick={() => emblaApi?.scrollTo(index)}
+              />
+            ))}
           </div>
         </div>
       </section>
@@ -313,66 +341,17 @@ const Index = () => {
 
       <section id="advantages" className="py-20">
         <div className="container mx-auto">
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-8 sm:mb-12 text-center">Качественные запчасти</h2>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-8 sm:mb-12 text-center">Наши преимущества</h2>
           
-          <div className="relative">
-            <div className="overflow-hidden" ref={emblaRef}>
-              <div className="flex">
-                {advantages.map((adv, index) => (
-                  <div key={index} className="flex-[0_0_100%] min-w-0 px-4 md:flex-[0_0_50%] lg:flex-[0_0_33.333%]">
-                    <Card className="h-full overflow-hidden group hover:shadow-2xl transition-all duration-500 animate-slide-up border-primary/30" style={{animationDelay: `${index * 0.1}s`}}>
-                      <div className="aspect-video bg-gradient-to-br from-primary/20 to-secondary/20 relative overflow-hidden">
-                        <img 
-                          src={adv.image} 
-                          alt={adv.title} 
-                          className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
-                        />
-                        <div className="absolute inset-0 bg-gradient-to-t from-background/90 to-transparent flex items-end p-6">
-                          <div className="flex items-center gap-3">
-                            <div className="w-14 h-14 rounded-full bg-primary/90 flex items-center justify-center group-hover:scale-110 transition-transform">
-                              <Icon name={adv.icon as any} size={28} className="text-primary-foreground" />
-                            </div>
-                            <h3 className="text-2xl font-bold text-white drop-shadow-lg">{adv.title}</h3>
-                          </div>
-                        </div>
-                      </div>
-                      <CardContent className="p-6">
-                        <p className="text-muted-foreground leading-relaxed">{adv.text}</p>
-                      </CardContent>
-                    </Card>
-                  </div>
-                ))}
+          <div className="grid grid-cols-12 gap-6 sm:gap-8">
+            {advantages.map((adv, index) => (
+              <div key={index} className="col-span-12 md:col-span-6 lg:col-span-3 text-center animate-fade-in" style={{animationDelay: `${index * 0.15}s`}}>
+                <div className="mb-4 inline-flex items-center justify-center w-20 h-20 rounded-full bg-primary/20 hover:bg-primary/30 transition-colors">
+                  <Icon name={adv.icon as any} size={40} className="text-primary" />
+                </div>
+                <h3 className="text-xl font-bold mb-2">{adv.title}</h3>
+                <p className="text-muted-foreground">{adv.text}</p>
               </div>
-            </div>
-            
-            <Button
-              variant="outline"
-              size="icon"
-              className="absolute left-2 top-1/2 -translate-y-1/2 z-10 w-12 h-12 rounded-full bg-background/90 hover:bg-primary hover:text-primary-foreground hidden md:flex"
-              onClick={scrollToPrevious}
-            >
-              <Icon name="ChevronLeft" size={24} />
-            </Button>
-            
-            <Button
-              variant="outline"
-              size="icon"
-              className="absolute right-2 top-1/2 -translate-y-1/2 z-10 w-12 h-12 rounded-full bg-background/90 hover:bg-primary hover:text-primary-foreground hidden md:flex"
-              onClick={scrollToNext}
-            >
-              <Icon name="ChevronRight" size={24} />
-            </Button>
-          </div>
-
-          <div className="flex justify-center gap-2 mt-6">
-            {advantages.map((_, index) => (
-              <button
-                key={index}
-                className={`w-2.5 h-2.5 rounded-full transition-all duration-300 ${
-                  index === selectedIndex ? 'bg-primary w-8' : 'bg-muted-foreground/30'
-                }`}
-                onClick={() => emblaApi?.scrollTo(index)}
-              />
             ))}
           </div>
         </div>
