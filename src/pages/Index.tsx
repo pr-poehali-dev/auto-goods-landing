@@ -75,20 +75,21 @@ const Index = () => {
     <div className={`min-h-screen bg-background ${showGrid ? 'grid-guide' : ''}`}>
       <Button 
         onClick={() => setShowGrid(!showGrid)}
-        className="fixed bottom-4 left-4 z-50"
+        className="fixed bottom-4 left-4 z-50 text-xs sm:text-sm"
         variant="outline"
         size="sm"
       >
-        <Icon name={showGrid ? 'EyeOff' : 'Eye'} size={16} className="mr-2" />
-        {showGrid ? 'Скрыть' : 'Показать'} сетку
+        <Icon name={showGrid ? 'EyeOff' : 'Eye'} size={14} className="mr-1 sm:mr-2" />
+        <span className="hidden sm:inline">{showGrid ? 'Скрыть' : 'Показать'} сетку</span>
+        <span className="sm:hidden">{showGrid ? 'Сетка' : 'Сетка'}</span>
       </Button>
       
       <nav className="fixed top-0 w-full bg-background/95 backdrop-blur-sm z-50 border-b border-border">
         <div className="container mx-auto py-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-2">
-              <Icon name="Car" size={32} className="text-primary" />
-              <span className="text-2xl font-bold">AutoParts Pro</span>
+              <Icon name="Car" size={28} className="text-primary sm:w-8 sm:h-8" />
+              <span className="text-xl sm:text-2xl font-bold">AutoParts Pro</span>
             </div>
             
             <div className="hidden md:flex gap-6">
@@ -123,19 +124,19 @@ const Index = () => {
       <section id="hero" className="pt-32 pb-20 relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-primary/20 via-secondary/20 to-background -z-10"></div>
         <div className="container mx-auto text-center animate-fade-in">
-          <h1 className="text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
+          <h1 className="text-3xl sm:text-4xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent px-2">
             Качественные автозапчасти
           </h1>
-          <p className="text-xl md:text-2xl mb-8 text-muted-foreground max-w-2xl mx-auto">
+          <p className="text-base sm:text-lg md:text-2xl mb-8 text-muted-foreground max-w-2xl mx-auto px-2">
             Широкий ассортимент оригинальных деталей для вашего автомобиля с доставкой по всей России
           </p>
-          <div className="flex gap-4 justify-center flex-wrap">
-            <Button size="lg" className="text-lg px-8" onClick={() => scrollToSection('products')}>
-              <Icon name="ShoppingCart" size={20} className="mr-2" />
+          <div className="flex gap-3 justify-center flex-wrap px-2">
+            <Button size="lg" className="text-base sm:text-lg px-4 sm:px-8" onClick={() => scrollToSection('products')}>
+              <Icon name="ShoppingCart" size={18} className="mr-2" />
               Перейти в каталог
             </Button>
-            <Button size="lg" variant="outline" className="text-lg px-8" onClick={() => scrollToSection('contacts')}>
-              <Icon name="Phone" size={20} className="mr-2" />
+            <Button size="lg" variant="outline" className="text-base sm:text-lg px-4 sm:px-8" onClick={() => scrollToSection('contacts')}>
+              <Icon name="Phone" size={18} className="mr-2" />
               Связаться с нами
             </Button>
           </div>
@@ -144,42 +145,42 @@ const Index = () => {
 
       <section id="about" className="py-20 bg-card/50">
         <div className="container mx-auto">
-          <h2 className="text-4xl md:text-5xl font-bold mb-12">Кто мы?</h2>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-8 sm:mb-12">Кто мы?</h2>
           <div className="grid grid-cols-12 gap-6">
-            <div className="col-span-12 md:col-span-6 space-y-6 animate-fade-in">
-              <p className="text-lg text-muted-foreground">
+            <div className="col-span-12 md:col-span-6 space-y-4 sm:space-y-6 animate-fade-in">
+              <p className="text-base sm:text-lg text-muted-foreground">
                 <span className="text-primary font-semibold">AutoParts Pro</span> — ведущий поставщик автозапчастей на российском рынке с 2010 года.
               </p>
-              <p className="text-lg text-muted-foreground">
+              <p className="text-base sm:text-lg text-muted-foreground">
                 Мы специализируемся на поставках оригинальных деталей для всех марок автомобилей. Наша миссия — обеспечить каждого автовладельца качественными запчастями по доступным ценам.
               </p>
-              <p className="text-lg text-muted-foreground">
+              <p className="text-base sm:text-lg text-muted-foreground">
                 За годы работы мы наладили прямые контакты с производителями, что позволяет нам предлагать лучшие цены и гарантировать подлинность продукции.
               </p>
             </div>
-            <div className="col-span-12 md:col-span-6 grid grid-cols-12 gap-6">
+            <div className="col-span-12 md:col-span-6 grid grid-cols-12 gap-4 sm:gap-6">
               <Card className="col-span-6 text-center hover:scale-105 transition-transform">
-                <CardHeader>
-                  <CardTitle className="text-4xl text-primary">15+</CardTitle>
-                  <CardDescription>лет на рынке</CardDescription>
+                <CardHeader className="py-4 sm:py-6">
+                  <CardTitle className="text-3xl sm:text-4xl text-primary">15+</CardTitle>
+                  <CardDescription className="text-xs sm:text-sm">лет на рынке</CardDescription>
                 </CardHeader>
               </Card>
               <Card className="col-span-6 text-center hover:scale-105 transition-transform">
-                <CardHeader>
-                  <CardTitle className="text-4xl text-primary">50К+</CardTitle>
-                  <CardDescription>довольных клиентов</CardDescription>
+                <CardHeader className="py-4 sm:py-6">
+                  <CardTitle className="text-3xl sm:text-4xl text-primary">50К+</CardTitle>
+                  <CardDescription className="text-xs sm:text-sm">довольных клиентов</CardDescription>
                 </CardHeader>
               </Card>
               <Card className="col-span-6 text-center hover:scale-105 transition-transform">
-                <CardHeader>
-                  <CardTitle className="text-4xl text-primary">10К+</CardTitle>
-                  <CardDescription>товаров в наличии</CardDescription>
+                <CardHeader className="py-4 sm:py-6">
+                  <CardTitle className="text-3xl sm:text-4xl text-primary">10К+</CardTitle>
+                  <CardDescription className="text-xs sm:text-sm">товаров в наличии</CardDescription>
                 </CardHeader>
               </Card>
               <Card className="col-span-6 text-center hover:scale-105 transition-transform">
-                <CardHeader>
-                  <CardTitle className="text-4xl text-primary">100%</CardTitle>
-                  <CardDescription>оригинал</CardDescription>
+                <CardHeader className="py-4 sm:py-6">
+                  <CardTitle className="text-3xl sm:text-4xl text-primary">100%</CardTitle>
+                  <CardDescription className="text-xs sm:text-sm">оригинал</CardDescription>
                 </CardHeader>
               </Card>
             </div>
@@ -189,7 +190,7 @@ const Index = () => {
 
       <section id="lines" className="py-20">
         <div className="container mx-auto">
-          <h2 className="text-4xl md:text-5xl font-bold mb-12">Линейки продукции</h2>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-8 sm:mb-12">Линейки продукции</h2>
           <div className="grid grid-cols-12 gap-6">
             {productLines.map((line, index) => (
               <Card key={index} className="col-span-12 md:col-span-4 hover:scale-105 hover:border-primary transition-all cursor-pointer group animate-scale-in" style={{animationDelay: `${index * 0.1}s`}}>
@@ -208,7 +209,7 @@ const Index = () => {
 
       <section id="products" className="py-20 bg-card/50">
         <div className="container mx-auto">
-          <h2 className="text-4xl md:text-5xl font-bold mb-12">Популярная продукция</h2>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-8 sm:mb-12">Популярная продукция</h2>
           <div className="grid grid-cols-12 gap-6">
             {products.map((product) => (
               <Card key={product.id} className="col-span-12 md:col-span-6 lg:col-span-3 overflow-hidden hover:shadow-xl hover:scale-105 transition-all cursor-pointer group flex flex-col">
@@ -244,8 +245,8 @@ const Index = () => {
 
       <section id="advantages" className="py-20">
         <div className="container mx-auto">
-          <h2 className="text-4xl md:text-5xl font-bold mb-12">Наши преимущества</h2>
-          <div className="grid grid-cols-12 gap-8">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-8 sm:mb-12">Наши преимущества</h2>
+          <div className="grid grid-cols-12 gap-6 sm:gap-8">
             {advantages.map((adv, index) => (
               <div key={index} className="col-span-12 md:col-span-6 lg:col-span-3 text-center animate-fade-in" style={{animationDelay: `${index * 0.15}s`}}>
                 <div className="mb-4 inline-flex items-center justify-center w-20 h-20 rounded-full bg-primary/20 hover:bg-primary/30 transition-colors">
@@ -261,16 +262,16 @@ const Index = () => {
 
       <section id="faq" className="py-20 bg-card/50">
         <div className="container mx-auto">
-          <h2 className="text-4xl md:text-5xl font-bold mb-12">Часто задаваемые вопросы</h2>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-8 sm:mb-12">Часто задаваемые вопросы</h2>
           <div className="grid grid-cols-12 gap-6">
             <div className="col-span-12">
               <Accordion type="single" collapsible className="space-y-4">
                 {faqItems.map((item, index) => (
-                  <AccordionItem key={index} value={`item-${index}`} className="border border-border rounded-lg px-6 bg-background">
-                    <AccordionTrigger className="text-lg font-semibold hover:text-primary">
+                  <AccordionItem key={index} value={`item-${index}`} className="border border-border rounded-lg px-3 sm:px-6 bg-background">
+                    <AccordionTrigger className="text-base sm:text-lg font-semibold hover:text-primary">
                       {item.q}
                     </AccordionTrigger>
-                    <AccordionContent className="text-muted-foreground text-base">
+                    <AccordionContent className="text-muted-foreground text-sm sm:text-base">
                       {item.a}
                     </AccordionContent>
                   </AccordionItem>
@@ -283,7 +284,7 @@ const Index = () => {
 
       <section id="contacts" className="py-20">
         <div className="container mx-auto">
-          <h2 className="text-4xl md:text-5xl font-bold mb-12">Контакты</h2>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-8 sm:mb-12">Контакты</h2>
           <div className="grid grid-cols-12 gap-6">
             <Card className="col-span-12 md:col-span-6 lg:col-span-3">
               <CardHeader>
