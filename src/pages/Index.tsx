@@ -144,7 +144,7 @@ const Index = () => {
 
       <section id="about" className="py-20 px-4 bg-card/50">
         <div className="container mx-auto">
-          <h2 className="text-4xl md:text-5xl font-bold mb-12 text-center">Кто мы?</h2>
+          <h2 className="text-4xl md:text-5xl font-bold mb-12">Кто мы?</h2>
           <div className="grid grid-cols-12 gap-6">
             <div className="col-span-12 md:col-span-6 space-y-6 animate-fade-in">
               <p className="text-lg text-muted-foreground">
@@ -189,7 +189,7 @@ const Index = () => {
 
       <section id="lines" className="py-20 px-4">
         <div className="container mx-auto">
-          <h2 className="text-4xl md:text-5xl font-bold mb-12 text-center">Линейки продукции</h2>
+          <h2 className="text-4xl md:text-5xl font-bold mb-12">Линейки продукции</h2>
           <div className="grid grid-cols-12 gap-6">
             {productLines.map((line, index) => (
               <Card key={index} className="col-span-12 md:col-span-4 hover:scale-105 hover:border-primary transition-all cursor-pointer group animate-scale-in" style={{animationDelay: `${index * 0.1}s`}}>
@@ -208,10 +208,10 @@ const Index = () => {
 
       <section id="products" className="py-20 px-4 bg-card/50">
         <div className="container mx-auto">
-          <h2 className="text-4xl md:text-5xl font-bold mb-12 text-center">Популярная продукция</h2>
+          <h2 className="text-4xl md:text-5xl font-bold mb-12">Популярная продукция</h2>
           <div className="grid grid-cols-12 gap-6">
             {products.map((product) => (
-              <Card key={product.id} className="col-span-12 md:col-span-6 lg:col-span-3 overflow-hidden hover:shadow-xl hover:scale-105 transition-all cursor-pointer group">
+              <Card key={product.id} className="col-span-12 md:col-span-6 lg:col-span-3 overflow-hidden hover:shadow-xl hover:scale-105 transition-all cursor-pointer group flex flex-col">
                 <div className="aspect-square bg-muted/50 relative overflow-hidden">
                   <img src={product.image} alt={product.name} className="w-full h-full object-cover group-hover:scale-110 transition-transform" />
                   <div className="absolute top-2 right-2">
@@ -220,15 +220,21 @@ const Index = () => {
                     </span>
                   </div>
                 </div>
-                <CardHeader>
+                <CardHeader className="flex-grow">
                   <CardTitle className="text-lg">{product.name}</CardTitle>
                   <CardDescription>{product.description}</CardDescription>
                 </CardHeader>
-                <CardContent>
-                  <Button className="w-full group-hover:bg-secondary group-hover:border-secondary transition-colors">
-                    <Icon name="ShoppingCart" size={18} className="mr-2" />
-                    В корзину
-                  </Button>
+                <CardContent className="pt-0 mt-auto">
+                  <div className="flex gap-2">
+                    <Button variant="outline" className="flex-1">
+                      <Icon name="Info" size={18} className="mr-2" />
+                      Подробнее
+                    </Button>
+                    <Button className="flex-1 group-hover:bg-secondary group-hover:border-secondary transition-colors">
+                      <Icon name="ShoppingCart" size={18} className="mr-2" />
+                      В корзину
+                    </Button>
+                  </div>
                 </CardContent>
               </Card>
             ))}
@@ -238,7 +244,7 @@ const Index = () => {
 
       <section id="advantages" className="py-20 px-4">
         <div className="container mx-auto">
-          <h2 className="text-4xl md:text-5xl font-bold mb-12 text-center">Наши преимущества</h2>
+          <h2 className="text-4xl md:text-5xl font-bold mb-12">Наши преимущества</h2>
           <div className="grid grid-cols-12 gap-8">
             {advantages.map((adv, index) => (
               <div key={index} className="col-span-12 md:col-span-6 lg:col-span-3 text-center animate-fade-in" style={{animationDelay: `${index * 0.15}s`}}>
@@ -257,7 +263,7 @@ const Index = () => {
         <div className="container mx-auto">
           <div className="grid grid-cols-12">
             <div className="col-span-12 lg:col-span-8 lg:col-start-3">
-              <h2 className="text-4xl md:text-5xl font-bold mb-12 text-center">Часто задаваемые вопросы</h2>
+              <h2 className="text-4xl md:text-5xl font-bold mb-12">Часто задаваемые вопросы</h2>
               <Accordion type="single" collapsible className="space-y-4">
             {faqItems.map((item, index) => (
               <AccordionItem key={index} value={`item-${index}`} className="border border-border rounded-lg px-6 bg-background">
@@ -277,7 +283,7 @@ const Index = () => {
 
       <section id="contacts" className="py-20 px-4">
         <div className="container mx-auto">
-          <h2 className="text-4xl md:text-5xl font-bold mb-12 text-center">Контакты</h2>
+          <h2 className="text-4xl md:text-5xl font-bold mb-12">Контакты</h2>
           <div className="grid grid-cols-12 gap-6">
             <Card className="col-span-12 md:col-span-6 lg:col-span-3">
               <CardHeader>
