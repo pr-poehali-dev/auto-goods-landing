@@ -84,7 +84,7 @@ const Index = () => {
       </Button>
       
       <nav className="fixed top-0 w-full bg-background/95 backdrop-blur-sm z-50 border-b border-border">
-        <div className="container mx-auto px-4 py-4">
+        <div className="container mx-auto py-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-2">
               <Icon name="Car" size={32} className="text-primary" />
@@ -120,7 +120,7 @@ const Index = () => {
         </div>
       </nav>
 
-      <section id="hero" className="pt-32 pb-20 px-4 relative overflow-hidden">
+      <section id="hero" className="pt-32 pb-20 relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-primary/20 via-secondary/20 to-background -z-10"></div>
         <div className="container mx-auto text-center animate-fade-in">
           <h1 className="text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
@@ -142,7 +142,7 @@ const Index = () => {
         </div>
       </section>
 
-      <section id="about" className="py-20 px-4 bg-card/50">
+      <section id="about" className="py-20 bg-card/50">
         <div className="container mx-auto">
           <h2 className="text-4xl md:text-5xl font-bold mb-12">Кто мы?</h2>
           <div className="grid grid-cols-12 gap-6">
@@ -187,7 +187,7 @@ const Index = () => {
         </div>
       </section>
 
-      <section id="lines" className="py-20 px-4">
+      <section id="lines" className="py-20">
         <div className="container mx-auto">
           <h2 className="text-4xl md:text-5xl font-bold mb-12">Линейки продукции</h2>
           <div className="grid grid-cols-12 gap-6">
@@ -206,7 +206,7 @@ const Index = () => {
         </div>
       </section>
 
-      <section id="products" className="py-20 px-4 bg-card/50">
+      <section id="products" className="py-20 bg-card/50">
         <div className="container mx-auto">
           <h2 className="text-4xl md:text-5xl font-bold mb-12">Популярная продукция</h2>
           <div className="grid grid-cols-12 gap-6">
@@ -225,7 +225,7 @@ const Index = () => {
                   <CardDescription>{product.description}</CardDescription>
                 </CardHeader>
                 <CardContent className="pt-0 mt-auto">
-                  <div className="flex gap-2">
+                  <div className="flex flex-col md:flex-row gap-2">
                     <Button variant="outline" className="flex-1">
                       <Icon name="Info" size={18} className="mr-2" />
                       Подробнее
@@ -242,7 +242,7 @@ const Index = () => {
         </div>
       </section>
 
-      <section id="advantages" className="py-20 px-4">
+      <section id="advantages" className="py-20">
         <div className="container mx-auto">
           <h2 className="text-4xl md:text-5xl font-bold mb-12">Наши преимущества</h2>
           <div className="grid grid-cols-12 gap-8">
@@ -259,7 +259,7 @@ const Index = () => {
         </div>
       </section>
 
-      <section id="faq" className="py-20 px-4 bg-card/50">
+      <section id="faq" className="py-20 bg-card/50">
         <div className="container mx-auto">
           <h2 className="text-4xl md:text-5xl font-bold mb-12">Часто задаваемые вопросы</h2>
           <div className="grid grid-cols-12 gap-6">
@@ -281,7 +281,7 @@ const Index = () => {
         </div>
       </section>
 
-      <section id="contacts" className="py-20 px-4">
+      <section id="contacts" className="py-20">
         <div className="container mx-auto">
           <h2 className="text-4xl md:text-5xl font-bold mb-12">Контакты</h2>
           <div className="grid grid-cols-12 gap-6">
@@ -355,7 +355,7 @@ const Index = () => {
         </div>
       </section>
 
-      <footer className="bg-card py-8 px-4 border-t border-border">
+      <footer className="bg-card py-8 border-t border-border">
         <div className="container mx-auto text-center text-muted-foreground">
           <p>&copy; 2024 AutoParts Pro. Все права защищены.</p>
         </div>
