@@ -134,8 +134,8 @@ const Index = () => {
       <section id="about" className="py-20 px-4 bg-card/50">
         <div className="container mx-auto">
           <h2 className="text-4xl md:text-5xl font-bold mb-12 text-center">Кто мы?</h2>
-          <div className="grid md:grid-cols-2 gap-12 items-center max-w-5xl mx-auto">
-            <div className="space-y-6 animate-fade-in">
+          <div className="grid grid-cols-12 gap-6">
+            <div className="col-span-12 md:col-span-6 space-y-6 animate-fade-in">
               <p className="text-lg text-muted-foreground">
                 <span className="text-primary font-semibold">AutoParts Pro</span> — ведущий поставщик автозапчастей на российском рынке с 2010 года.
               </p>
@@ -146,26 +146,26 @@ const Index = () => {
                 За годы работы мы наладили прямые контакты с производителями, что позволяет нам предлагать лучшие цены и гарантировать подлинность продукции.
               </p>
             </div>
-            <div className="grid grid-cols-2 gap-6">
-              <Card className="text-center hover:scale-105 transition-transform">
+            <div className="col-span-12 md:col-span-6 grid grid-cols-12 gap-6">
+              <Card className="col-span-6 text-center hover:scale-105 transition-transform">
                 <CardHeader>
                   <CardTitle className="text-4xl text-primary">15+</CardTitle>
                   <CardDescription>лет на рынке</CardDescription>
                 </CardHeader>
               </Card>
-              <Card className="text-center hover:scale-105 transition-transform">
+              <Card className="col-span-6 text-center hover:scale-105 transition-transform">
                 <CardHeader>
                   <CardTitle className="text-4xl text-primary">50К+</CardTitle>
                   <CardDescription>довольных клиентов</CardDescription>
                 </CardHeader>
               </Card>
-              <Card className="text-center hover:scale-105 transition-transform">
+              <Card className="col-span-6 text-center hover:scale-105 transition-transform">
                 <CardHeader>
                   <CardTitle className="text-4xl text-primary">10К+</CardTitle>
                   <CardDescription>товаров в наличии</CardDescription>
                 </CardHeader>
               </Card>
-              <Card className="text-center hover:scale-105 transition-transform">
+              <Card className="col-span-6 text-center hover:scale-105 transition-transform">
                 <CardHeader>
                   <CardTitle className="text-4xl text-primary">100%</CardTitle>
                   <CardDescription>оригинал</CardDescription>
@@ -179,9 +179,9 @@ const Index = () => {
       <section id="lines" className="py-20 px-4">
         <div className="container mx-auto">
           <h2 className="text-4xl md:text-5xl font-bold mb-12 text-center">Линейки продукции</h2>
-          <div className="grid md:grid-cols-3 gap-6 max-w-6xl mx-auto">
+          <div className="grid grid-cols-12 gap-6">
             {productLines.map((line, index) => (
-              <Card key={index} className="hover:scale-105 hover:border-primary transition-all cursor-pointer group animate-scale-in" style={{animationDelay: `${index * 0.1}s`}}>
+              <Card key={index} className="col-span-12 md:col-span-4 hover:scale-105 hover:border-primary transition-all cursor-pointer group animate-scale-in" style={{animationDelay: `${index * 0.1}s`}}>
                 <CardHeader>
                   <div className="mb-4">
                     <Icon name={line.icon as any} size={48} className="text-primary group-hover:text-secondary transition-colors" />
@@ -198,9 +198,9 @@ const Index = () => {
       <section id="products" className="py-20 px-4 bg-card/50">
         <div className="container mx-auto">
           <h2 className="text-4xl md:text-5xl font-bold mb-12 text-center">Популярная продукция</h2>
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto">
+          <div className="grid grid-cols-12 gap-6">
             {products.map((product) => (
-              <Card key={product.id} className="overflow-hidden hover:shadow-xl hover:scale-105 transition-all cursor-pointer group">
+              <Card key={product.id} className="col-span-12 md:col-span-6 lg:col-span-3 overflow-hidden hover:shadow-xl hover:scale-105 transition-all cursor-pointer group">
                 <div className="aspect-square bg-muted/50 relative overflow-hidden">
                   <img src={product.image} alt={product.name} className="w-full h-full object-cover group-hover:scale-110 transition-transform" />
                   <div className="absolute top-2 right-2">
@@ -228,9 +228,9 @@ const Index = () => {
       <section id="advantages" className="py-20 px-4">
         <div className="container mx-auto">
           <h2 className="text-4xl md:text-5xl font-bold mb-12 text-center">Наши преимущества</h2>
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto">
+          <div className="grid grid-cols-12 gap-8">
             {advantages.map((adv, index) => (
-              <div key={index} className="text-center animate-fade-in" style={{animationDelay: `${index * 0.15}s`}}>
+              <div key={index} className="col-span-12 md:col-span-6 lg:col-span-3 text-center animate-fade-in" style={{animationDelay: `${index * 0.15}s`}}>
                 <div className="mb-4 inline-flex items-center justify-center w-20 h-20 rounded-full bg-primary/20 hover:bg-primary/30 transition-colors">
                   <Icon name={adv.icon as any} size={40} className="text-primary" />
                 </div>
@@ -243,9 +243,11 @@ const Index = () => {
       </section>
 
       <section id="faq" className="py-20 px-4 bg-card/50">
-        <div className="container mx-auto max-w-3xl">
-          <h2 className="text-4xl md:text-5xl font-bold mb-12 text-center">Часто задаваемые вопросы</h2>
-          <Accordion type="single" collapsible className="space-y-4">
+        <div className="container mx-auto">
+          <div className="grid grid-cols-12">
+            <div className="col-span-12 lg:col-span-8 lg:col-start-3">
+              <h2 className="text-4xl md:text-5xl font-bold mb-12 text-center">Часто задаваемые вопросы</h2>
+              <Accordion type="single" collapsible className="space-y-4">
             {faqItems.map((item, index) => (
               <AccordionItem key={index} value={`item-${index}`} className="border border-border rounded-lg px-6 bg-background">
                 <AccordionTrigger className="text-lg font-semibold hover:text-primary">
@@ -256,15 +258,17 @@ const Index = () => {
                 </AccordionContent>
               </AccordionItem>
             ))}
-          </Accordion>
+              </Accordion>
+            </div>
+          </div>
         </div>
       </section>
 
       <section id="contacts" className="py-20 px-4">
-        <div className="container mx-auto max-w-4xl">
+        <div className="container mx-auto">
           <h2 className="text-4xl md:text-5xl font-bold mb-12 text-center">Контакты</h2>
-          <div className="grid md:grid-cols-2 gap-8">
-            <Card>
+          <div className="grid grid-cols-12 gap-6">
+            <Card className="col-span-12 md:col-span-6 lg:col-span-3">
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
                   <Icon name="MapPin" size={24} className="text-primary" />
@@ -277,7 +281,7 @@ const Index = () => {
               </CardContent>
             </Card>
 
-            <Card>
+            <Card className="col-span-12 md:col-span-6 lg:col-span-3">
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
                   <Icon name="Phone" size={24} className="text-primary" />
@@ -290,7 +294,7 @@ const Index = () => {
               </CardContent>
             </Card>
 
-            <Card>
+            <Card className="col-span-12 md:col-span-6 lg:col-span-3">
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
                   <Icon name="Mail" size={24} className="text-primary" />
@@ -303,7 +307,7 @@ const Index = () => {
               </CardContent>
             </Card>
 
-            <Card>
+            <Card className="col-span-12 md:col-span-6 lg:col-span-3">
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
                   <Icon name="Clock" size={24} className="text-primary" />
