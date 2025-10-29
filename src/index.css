@@ -13,16 +13,16 @@
     --popover: 222 40% 15%;
     --popover-foreground: 0 0% 98%;
 
-    --primary: 18 100% 55%;
+    --primary: 0 84% 60%;
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 199 89% 48%;
+    --secondary: 0 72% 51%;
     --secondary-foreground: 0 0% 100%;
 
     --muted: 222 30% 25%;
     --muted-foreground: 220 10% 70%;
 
-    --accent: 18 100% 55%;
+    --accent: 0 84% 60%;
     --accent-foreground: 0 0% 100%;
 
     --destructive: 0 84.2% 60.2%;
@@ -30,7 +30,7 @@
 
     --border: 222 30% 25%;
     --input: 222 30% 25%;
-    --ring: 18 100% 55%;
+    --ring: 0 84% 60%;
 
     --radius: 0.75rem;
 
@@ -127,8 +127,8 @@
     z-index: 9999;
     background-image: repeating-linear-gradient(
       to right,
-      rgba(249, 115, 22, 0.1) 0,
-      rgba(249, 115, 22, 0.1) calc(100% / 12 - 0.5rem),
+      rgba(239, 68, 68, 0.1) 0,
+      rgba(239, 68, 68, 0.1) calc(100% / 12 - 0.5rem),
       transparent calc(100% / 12 - 0.5rem),
       transparent calc(100% / 12)
     );

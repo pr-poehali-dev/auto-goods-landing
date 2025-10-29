@@ -1,12 +1,50 @@
-import { useState } from 'react';
+import { useState, useCallback, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import Icon from '@/components/ui/icon';
+import useEmblaCarousel from 'embla-carousel-react';
 
 const Index = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [showGrid, setShowGrid] = useState(false);
+  const [showScrollTop, setShowScrollTop] = useState(false);
+  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true, align: 'start' });
+  const [selectedIndex, setSelectedIndex] = useState(0);
+
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setShowScrollTop(window.scrollY > 400);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  const scrollToPrevious = useCallback(() => {
+    if (emblaApi) emblaApi.scrollPrev();
+  }, [emblaApi]);
+
+  const scrollToNext = useCallback(() => {
+    if (emblaApi) emblaApi.scrollNext();
+  }, [emblaApi]);
+
+  const onSelect = useCallback(() => {
+    if (!emblaApi) return;
+    setSelectedIndex(emblaApi.selectedScrollSnap());
+  }, [emblaApi]);
+
+  useEffect(() => {
+    if (!emblaApi) return;
+    onSelect();
+    emblaApi.on('select', onSelect);
+    return () => {
+      emblaApi.off('select', onSelect);
+    };
+  }, [emblaApi, onSelect]);
 
   const products = [
     {
@@ -49,10 +87,30 @@ const Index = () => {
   ];
 
   const advantages = [
-    { title: 'Оригинальное качество', icon: 'BadgeCheck', text: 'Все товары сертифицированы' },
-    { title: 'Быстрая доставка', icon: 'Truck', text: 'Отправка в день заказа' },
-    { title: 'Гарантия', icon: 'Shield', text: 'До 3 лет на все позиции' },
-    { title: 'Консультации', icon: 'Headphones', text: 'Помощь в подборе 24/7' }
+    { 
+      title: 'Оригинальное качество', 
+      icon: 'BadgeCheck', 
+      text: 'Все товары сертифицированы и проходят строгий контроль качества. Мы работаем напрямую с производителями.',
+      image: 'https://cdn.poehali.dev/projects/7d92a597-2f46-4f3e-b08a-52e77ed94583/files/c8d88fee-95b6-4b20-9ad1-1c99e9f63eaf.jpg'
+    },
+    { 
+      title: 'Быстрая доставка', 
+      icon: 'Truck', 
+      text: 'Отправка в день заказа по всей России. Собственная логистическая сеть гарантирует сроки.',
+      image: 'https://cdn.poehali.dev/projects/7d92a597-2f46-4f3e-b08a-52e77ed94583/files/155bd199-a5fd-42d9-8f91-29b1fad8c4f0.jpg'
+    },
+    { 
+      title: 'Гарантия', 
+      icon: 'Shield', 
+      text: 'До 3 лет гарантии на все позиции. Бесплатная замена в случае заводского брака.',
+      image: 'https://cdn.poehali.dev/projects/7d92a597-2f46-4f3e-b08a-52e77ed94583/files/9884fb72-86b8-45f8-b69a-2eab754fa049.jpg'
+    },
+    { 
+      title: 'Консультации', 
+      icon: 'Headphones', 
+      text: 'Профессиональная помощь в подборе запчастей 24/7. Наши специалисты всегда на связи.',
+      image: 'https://cdn.poehali.dev/projects/7d92a597-2f46-4f3e-b08a-52e77ed94583/files/c8d88fee-95b6-4b20-9ad1-1c99e9f63eaf.jpg'
+    }
   ];
 
   const faqItems = [
@@ -83,6 +141,16 @@ const Index = () => {
         <span className="hidden sm:inline">{showGrid ? 'Скрыть' : 'Показать'} сетку</span>
         <span className="sm:hidden">{showGrid ? 'Сетка' : 'Сетка'}</span>
       </Button>
+
+      {showScrollTop && (
+        <Button
+          onClick={scrollToTop}
+          className="fixed bottom-4 right-4 z-50 w-12 h-12 rounded-full shadow-lg hover:shadow-xl transition-all animate-slide-up"
+          size="icon"
+        >
+          <Icon name="ArrowUp" size={24} />
+        </Button>
+      )}
       
       <nav className="fixed top-0 w-full bg-background/95 backdrop-blur-sm z-50 border-b border-border">
         <div className="container mx-auto py-4">
@@ -245,16 +313,66 @@ const Index = () => {
 
       <section id="advantages" className="py-20">
         <div className="container mx-auto">
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-8 sm:mb-12">Наши преимущества</h2>
-          <div className="grid grid-cols-12 gap-6 sm:gap-8">
-            {advantages.map((adv, index) => (
-              <div key={index} className="col-span-12 md:col-span-6 lg:col-span-3 text-center animate-fade-in" style={{animationDelay: `${index * 0.15}s`}}>
-                <div className="mb-4 inline-flex items-center justify-center w-20 h-20 rounded-full bg-primary/20 hover:bg-primary/30 transition-colors">
-                  <Icon name={adv.icon as any} size={40} className="text-primary" />
-                </div>
-                <h3 className="text-xl font-bold mb-2">{adv.title}</h3>
-                <p className="text-muted-foreground">{adv.text}</p>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-8 sm:mb-12 text-center">Качественные запчасти</h2>
+          
+          <div className="relative">
+            <div className="overflow-hidden" ref={emblaRef}>
+              <div className="flex">
+                {advantages.map((adv, index) => (
+                  <div key={index} className="flex-[0_0_100%] min-w-0 px-4 md:flex-[0_0_50%] lg:flex-[0_0_33.333%]">
+                    <Card className="h-full overflow-hidden group hover:shadow-2xl transition-all duration-500 animate-slide-up border-primary/30" style={{animationDelay: `${index * 0.1}s`}}>
+                      <div className="aspect-video bg-gradient-to-br from-primary/20 to-secondary/20 relative overflow-hidden">
+                        <img 
+                          src={adv.image} 
+                          alt={adv.title} 
+                          className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-background/90 to-transparent flex items-end p-6">
+                          <div className="flex items-center gap-3">
+                            <div className="w-14 h-14 rounded-full bg-primary/90 flex items-center justify-center group-hover:scale-110 transition-transform">
+                              <Icon name={adv.icon as any} size={28} className="text-primary-foreground" />
+                            </div>
+                            <h3 className="text-2xl font-bold text-white drop-shadow-lg">{adv.title}</h3>
+                          </div>
+                        </div>
+                      </div>
+                      <CardContent className="p-6">
+                        <p className="text-muted-foreground leading-relaxed">{adv.text}</p>
+                      </CardContent>
+                    </Card>
+                  </div>
+                ))}
               </div>
+            </div>
+            
+            <Button
+              variant="outline"
+              size="icon"
+              className="absolute left-2 top-1/2 -translate-y-1/2 z-10 w-12 h-12 rounded-full bg-background/90 hover:bg-primary hover:text-primary-foreground hidden md:flex"
+              onClick={scrollToPrevious}
+            >
+              <Icon name="ChevronLeft" size={24} />
+            </Button>
+            
+            <Button
+              variant="outline"
+              size="icon"
+              className="absolute right-2 top-1/2 -translate-y-1/2 z-10 w-12 h-12 rounded-full bg-background/90 hover:bg-primary hover:text-primary-foreground hidden md:flex"
+              onClick={scrollToNext}
+            >
+              <Icon name="ChevronRight" size={24} />
+            </Button>
+          </div>
+
+          <div className="flex justify-center gap-2 mt-6">
+            {advantages.map((_, index) => (
+              <button
+                key={index}
+                className={`w-2.5 h-2.5 rounded-full transition-all duration-300 ${
+                  index === selectedIndex ? 'bg-primary w-8' : 'bg-muted-foreground/30'
+                }`}
+                onClick={() => emblaApi?.scrollTo(index)}
+              />
             ))}
           </div>
         </div>
