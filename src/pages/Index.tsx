@@ -257,15 +257,17 @@ const Index = () => {
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-8 sm:mb-12 animate-slide-in-left">Кто мы?</h2>
           <div className="grid grid-cols-12 gap-6">
             <div className="col-span-12 md:col-span-6 space-y-4 sm:space-y-6 animate-slide-in-left">
-              <p className="text-base sm:text-lg text-muted-foreground">
-                <span className="text-primary font-semibold">AutoParts Pro</span> — ведущий поставщик автозапчастей на российском рынке с 2010 года.
-              </p>
-              <p className="text-base sm:text-lg text-muted-foreground">
-                Мы специализируемся на поставках оригинальных деталей для всех марок автомобилей. Наша миссия — обеспечить каждого автовладельца качественными запчастями по доступным ценам.
-              </p>
-              <p className="text-base sm:text-lg text-muted-foreground">
-                За годы работы мы наладили прямые контакты с производителями, что позволяет нам предлагать лучшие цены и гарантировать подлинность продукции.
-              </p>
+              <p className="text-base sm:text-lg text-muted-foreground">H’ANZauto — это немецкий бренд автозапчастей, основанный в 1961 году компанией Hanz-Ersatzteil-Fahrzeuge. С первых дней мы создавали детали для немецких автомобилей, делая ставку на точность, надёжность и качество.
+
+Со временем ассортимент H’ANZauto вырос — сегодня мы производим запчасти для популярных марок по всему миру, сохраняя немецкие стандарты в каждой детали.
+
+В 2010 году часть производства была перенесена в Китай, чтобы объединить немецкую инженерную школу с современными технологиями и оптимальными производственными затратами. Более двухсот специалистов переехали вместе с компанией, чтобы сохранить традиции и контроль качества.
+
+Сегодня H’ANZauto — это сочетание немецкой инженерии, инноваций и глобальной логистики. Наши заводы в Германии и Китае позволяют быстро поставлять продукцию клиентам в разных странах, обеспечивая стабильное качество и конкурентную цену.
+
+H’ANZauto — немецкое качество, созданное для вашего автомобиля.</p>
+              <p className="text-base sm:text-lg text-muted-foreground"></p>
+              <p className="text-base sm:text-lg text-muted-foreground"></p>
             </div>
             <div className="col-span-12 md:col-span-6 grid grid-cols-12 gap-4 sm:gap-6">
               <Card className="col-span-6 text-center hover:scale-110 hover:rotate-2 transition-all animate-bounce-in" style={{animationDelay: '0.1s'}}>
