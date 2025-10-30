@@ -87,12 +87,10 @@ const Index = () => {
   ];
 
   const productLines = [
-    { name: 'Масла и жидкости', icon: 'Droplet', description: 'Полный ассортимент смазочных материалов' },
-    { name: 'Тормозная система', icon: 'CircleStop', description: 'Колодки, диски, жидкости' },
-    { name: 'Электрика', icon: 'Zap', description: 'Аккумуляторы, провода, датчики' },
-    { name: 'Фильтры', icon: 'Filter', description: 'Воздушные, масляные, топливные' },
-    { name: 'Подвеска', icon: 'Gauge', description: 'Амортизаторы, пружины, сайлентблоки' },
-    { name: 'Освещение', icon: 'Lightbulb', description: 'Лампы, фары, LED-системы' }
+    { name: 'Моторные масла', icon: 'Droplet', description: 'Синтетические и минеральные масла для всех типов двигателей' },
+    { name: 'Фильтры', icon: 'Filter', description: 'Воздушные, масляные, топливные и салонные фильтры' },
+    { name: 'Свечи зажигания', icon: 'Zap', description: 'Высококачественные свечи для стабильной работы двигателя' },
+    { name: 'Тормозные колодки', icon: 'CircleStop', description: 'Надежные колодки для безопасного торможения' }
   ];
 
   const advantages = [
@@ -302,9 +300,18 @@ H’ANZauto — немецкое качество, созданное для в�
       <section id="lines" className="py-20">
         <div className="container mx-auto">
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-8 sm:mb-12 animate-rotate-in">Линейки продукции</h2>
+          <p className="text-lg text-muted-foreground mb-8 max-w-2xl">
+            Выберите категорию товаров для вашего автомобиля
+          </p>
+        </div>
+      </section>
+
+      <section id="products" className="py-20 bg-card/50">
+        <div className="container mx-auto">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-8 sm:mb-12 animate-slide-in-left">Подбор товара</h2>
           <div className="grid grid-cols-12 gap-6">
             {productLines.map((line, index) => (
-              <Card key={index} className="col-span-12 md:col-span-4 hover:scale-110 hover:border-primary hover:shadow-2xl transition-all cursor-pointer group animate-flip-in" style={{animationDelay: `${index * 0.1}s`}}>
+              <Card key={index} className="col-span-12 md:col-span-6 lg:col-span-3 hover:scale-110 hover:border-primary hover:shadow-2xl transition-all cursor-pointer group animate-flip-in" style={{animationDelay: `${index * 0.1}s`}}>
                 <CardHeader>
                   <div className="mb-4 group-hover:animate-float">
                     <Icon name={line.icon as any} size={48} className="text-primary group-hover:text-secondary group-hover:rotate-12 transition-all" />
@@ -312,42 +319,6 @@ H’ANZauto — немецкое качество, созданное для в�
                   <CardTitle className="text-xl">{line.name}</CardTitle>
                   <CardDescription className="text-base">{line.description}</CardDescription>
                 </CardHeader>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section id="products" className="py-20 bg-card/50">
-        <div className="container mx-auto">
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-8 sm:mb-12 animate-slide-in-left">Популярная продукция</h2>
-          <div className="grid grid-cols-12 gap-6">
-            {products.map((product) => (
-              <Card key={product.id} className="col-span-12 md:col-span-6 lg:col-span-3 overflow-hidden hover:shadow-2xl hover:scale-110 hover:-rotate-1 transition-all duration-300 cursor-pointer group flex flex-col animate-slide-up">
-                <div className="aspect-square bg-muted/50 relative overflow-hidden">
-                  <img src={product.image} alt={product.name} className="w-full h-full object-cover group-hover:scale-125 group-hover:rotate-3 transition-all duration-500" />
-                  <div className="absolute top-2 right-2 animate-bounce-in">
-                    <span className="bg-primary text-primary-foreground px-3 py-1 rounded-full text-sm font-semibold shadow-lg">
-                      {product.category}
-                    </span>
-                  </div>
-                </div>
-                <CardHeader className="flex-grow">
-                  <CardTitle className="text-lg">{product.name}</CardTitle>
-                  <CardDescription>{product.description}</CardDescription>
-                </CardHeader>
-                <CardContent className="pt-0 mt-auto">
-                  <div className="flex flex-col md:flex-row gap-2">
-                    <Button variant="outline" className="flex-1">
-                      <Icon name="Info" size={18} className="mr-2" />
-                      Подробнее
-                    </Button>
-                    <Button className="flex-1 group-hover:bg-secondary group-hover:border-secondary transition-colors">
-                      <Icon name="ShoppingCart" size={18} className="mr-2" />
-                      В корзину
-                    </Button>
-                  </div>
-                </CardContent>
               </Card>
             ))}
           </div>
