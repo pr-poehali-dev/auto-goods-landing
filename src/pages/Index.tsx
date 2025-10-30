@@ -12,6 +12,8 @@ const Index = () => {
   const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true, align: 'start' });
   const [selectedIndex, setSelectedIndex] = useState(0);
   const [isAutoplayPaused, setIsAutoplayPaused] = useState(false);
+  const [selectedCategory, setSelectedCategory] = useState<string>('Все');
+  const [searchQuery, setSearchQuery] = useState<string>('');
 
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -58,31 +60,59 @@ const Index = () => {
   const products = [
     {
       id: 1,
-      name: 'Моторные масла Premium',
+      name: 'Моторные масла Premium 5W-30',
       description: 'Синтетические масла для максимальной защиты двигателя',
-      category: 'Масла и жидкости',
+      category: 'Моторные масла',
       image: 'https://cdn.poehali.dev/projects/7d92a597-2f46-4f3e-b08a-52e77ed94583/files/c8d88fee-95b6-4b20-9ad1-1c99e9f63eaf.jpg'
     },
     {
       id: 2,
-      name: 'Тормозные колодки Pro',
-      description: 'Надежное торможение в любых условиях',
-      category: 'Тормозная система',
-      image: 'https://cdn.poehali.dev/projects/7d92a597-2f46-4f3e-b08a-52e77ed94583/files/155bd199-a5fd-42d9-8f91-29b1fad8c4f0.jpg'
+      name: 'Моторные масла Standart 10W-40',
+      description: 'Полусинтетические масла для ежедневной эксплуатации',
+      category: 'Моторные масла',
+      image: 'https://cdn.poehali.dev/projects/7d92a597-2f46-4f3e-b08a-52e77ed94583/files/c8d88fee-95b6-4b20-9ad1-1c99e9f63eaf.jpg'
     },
     {
       id: 3,
-      name: 'Аккумуляторы PowerMax',
-      description: 'Высокая емкость и долгий срок службы',
-      category: 'Электрика',
-      image: 'https://cdn.poehali.dev/projects/7d92a597-2f46-4f3e-b08a-52e77ed94583/files/9884fb72-86b8-45f8-b69a-2eab754fa049.jpg'
+      name: 'Тормозные колодки Pro передние',
+      description: 'Надежное торможение в любых условиях',
+      category: 'Тормозные колодки',
+      image: 'https://cdn.poehali.dev/projects/7d92a597-2f46-4f3e-b08a-52e77ed94583/files/155bd199-a5fd-42d9-8f91-29b1fad8c4f0.jpg'
     },
     {
       id: 4,
-      name: 'Фильтры воздушные',
+      name: 'Тормозные колодки задние керамические',
+      description: 'Низкий уровень шума и пыли',
+      category: 'Тормозные колодки',
+      image: 'https://cdn.poehali.dev/projects/7d92a597-2f46-4f3e-b08a-52e77ed94583/files/155bd199-a5fd-42d9-8f91-29b1fad8c4f0.jpg'
+    },
+    {
+      id: 5,
+      name: 'Фильтр воздушный',
       description: 'Эффективная очистка воздуха для двигателя',
       category: 'Фильтры',
-      image: '/placeholder.svg'
+      image: 'https://cdn.poehali.dev/projects/7d92a597-2f46-4f3e-b08a-52e77ed94583/files/9884fb72-86b8-45f8-b69a-2eab754fa049.jpg'
+    },
+    {
+      id: 6,
+      name: 'Фильтр масляный',
+      description: 'Высокая степень очистки масла',
+      category: 'Фильтры',
+      image: 'https://cdn.poehali.dev/projects/7d92a597-2f46-4f3e-b08a-52e77ed94583/files/9884fb72-86b8-45f8-b69a-2eab754fa049.jpg'
+    },
+    {
+      id: 7,
+      name: 'Свечи зажигания иридиевые',
+      description: 'Долгий срок службы до 100 000 км',
+      category: 'Свечи зажигания',
+      image: 'https://cdn.poehali.dev/projects/7d92a597-2f46-4f3e-b08a-52e77ed94583/files/9884fb72-86b8-45f8-b69a-2eab754fa049.jpg'
+    },
+    {
+      id: 8,
+      name: 'Свечи зажигания стандартные',
+      description: 'Надежный запуск и стабильная работа',
+      category: 'Свечи зажигания',
+      image: 'https://cdn.poehali.dev/projects/7d92a597-2f46-4f3e-b08a-52e77ed94583/files/9884fb72-86b8-45f8-b69a-2eab754fa049.jpg'
     }
   ];
 
@@ -171,7 +201,6 @@ const Index = () => {
             <div className="hidden md:flex gap-6">
               <button onClick={() => scrollToSection('hero')} className="hover:text-primary hover:scale-110 transition-all">Главная</button>
               <button onClick={() => scrollToSection('about')} className="hover:text-primary hover:scale-110 transition-all">О нас</button>
-              <button onClick={() => scrollToSection('lines')} className="hover:text-primary hover:scale-110 transition-all">Линейки</button>
               <button onClick={() => scrollToSection('products')} className="hover:text-primary hover:scale-110 transition-all">Продукция</button>
               <button onClick={() => scrollToSection('advantages')} className="hover:text-primary hover:scale-110 transition-all">Преимущества</button>
               <button onClick={() => scrollToSection('faq')} className="hover:text-primary hover:scale-110 transition-all">FAQ</button>
@@ -187,7 +216,6 @@ const Index = () => {
             <div className="md:hidden mt-4 pb-4 flex flex-col gap-3 animate-fade-in">
               <button onClick={() => scrollToSection('hero')} className="text-left hover:text-primary transition-colors">Главная</button>
               <button onClick={() => scrollToSection('about')} className="text-left hover:text-primary transition-colors">О нас</button>
-              <button onClick={() => scrollToSection('lines')} className="text-left hover:text-primary transition-colors">Линейки</button>
               <button onClick={() => scrollToSection('products')} className="text-left hover:text-primary transition-colors">Продукция</button>
               <button onClick={() => scrollToSection('advantages')} className="text-left hover:text-primary transition-colors">Преимущества</button>
               <button onClick={() => scrollToSection('faq')} className="text-left hover:text-primary transition-colors">FAQ</button>
@@ -297,31 +325,79 @@ H’ANZauto — немецкое качество, созданное для в�
         </div>
       </section>
 
-      <section id="lines" className="py-20">
-        <div className="container mx-auto">
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-8 sm:mb-12 animate-rotate-in">Линейки продукции</h2>
-          <p className="text-lg text-muted-foreground mb-8 max-w-2xl">
-            Выберите категорию товаров для вашего автомобиля
-          </p>
-        </div>
-      </section>
-
       <section id="products" className="py-20 bg-card/50">
         <div className="container mx-auto">
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-8 sm:mb-12 animate-slide-in-left">Подбор товара</h2>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-8 animate-slide-in-left">Подбор товара</h2>
+          
+          <div className="mb-8 flex flex-col md:flex-row gap-4">
+            <div className="flex-1 relative">
+              <Icon name="Search" size={20} className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground" />
+              <input
+                type="text"
+                placeholder="Поиск товаров..."
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                className="w-full pl-10 pr-4 py-3 rounded-lg border border-input bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-primary"
+              />
+            </div>
+          </div>
+
+          <div className="mb-8 flex flex-wrap gap-3 animate-fade-in">
+            <Button
+              variant={selectedCategory === 'Все' ? 'default' : 'outline'}
+              onClick={() => setSelectedCategory('Все')}
+              className="transition-all hover:scale-105"
+            >
+              Все
+            </Button>
+            {productLines.map((line) => (
+              <Button
+                key={line.name}
+                variant={selectedCategory === line.name ? 'default' : 'outline'}
+                onClick={() => setSelectedCategory(line.name)}
+                className="transition-all hover:scale-105"
+              >
+                <Icon name={line.icon as any} size={18} className="mr-2" />
+                {line.name}
+              </Button>
+            ))}
+          </div>
+
           <div className="grid grid-cols-12 gap-6">
-            {productLines.map((line, index) => (
-              <Card key={index} className="col-span-12 md:col-span-6 lg:col-span-3 hover:scale-110 hover:border-primary hover:shadow-2xl transition-all cursor-pointer group animate-flip-in" style={{animationDelay: `${index * 0.1}s`}}>
+            {products
+              .filter((product) => 
+                (selectedCategory === 'Все' || product.category === selectedCategory) &&
+                (searchQuery === '' || product.name.toLowerCase().includes(searchQuery.toLowerCase()) || product.description.toLowerCase().includes(searchQuery.toLowerCase()))
+              )
+              .map((product, index) => (
+              <Card key={product.id} className="col-span-12 md:col-span-6 lg:col-span-3 hover:scale-110 hover:border-primary hover:shadow-2xl transition-all cursor-pointer group animate-flip-in" style={{animationDelay: `${index * 0.1}s`}}>
                 <CardHeader>
                   <div className="mb-4 group-hover:animate-float">
-                    <Icon name={line.icon as any} size={48} className="text-primary group-hover:text-secondary group-hover:rotate-12 transition-all" />
+                    <Icon name={productLines.find(l => l.name === product.category)?.icon as any || 'Package'} size={48} className="text-primary group-hover:text-secondary group-hover:rotate-12 transition-all" />
                   </div>
-                  <CardTitle className="text-xl">{line.name}</CardTitle>
-                  <CardDescription className="text-base">{line.description}</CardDescription>
+                  <CardTitle className="text-lg">{product.name}</CardTitle>
+                  <CardDescription className="text-sm">{product.description}</CardDescription>
                 </CardHeader>
+                <CardContent>
+                  <Button className="w-full group-hover:bg-secondary group-hover:border-secondary transition-colors">
+                    <Icon name="Search" size={18} className="mr-2" />
+                    Подобрать
+                  </Button>
+                </CardContent>
               </Card>
             ))}
           </div>
+
+          {products.filter((product) => 
+            (selectedCategory === 'Все' || product.category === selectedCategory) &&
+            (searchQuery === '' || product.name.toLowerCase().includes(searchQuery.toLowerCase()) || product.description.toLowerCase().includes(searchQuery.toLowerCase()))
+          ).length === 0 && (
+            <div className="text-center py-12 animate-fade-in">
+              <Icon name="PackageSearch" size={64} className="mx-auto text-muted-foreground mb-4" />
+              <p className="text-xl text-muted-foreground">Товары не найдены</p>
+              <p className="text-sm text-muted-foreground mt-2">Попробуйте изменить параметры поиска</p>
+            </div>
+          )}
         </div>
       </section>
 
